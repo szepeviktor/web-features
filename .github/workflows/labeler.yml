@@ -1,6 +1,7 @@
 name: "Pull request labeler"
 on:
   - pull_request_target
+  https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#pull_request_target
 
 jobs:
   labeler:
@@ -12,6 +13,7 @@ jobs:
       - uses: actions/labeler@v5
       - if: github.event.pull_request.user.login == 'dependabot[bot]'
         run: gh pr edit ${{ github.event.pull_request.number }} --add-label "generated"
+        gh release create --draft … with a tag and title
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
